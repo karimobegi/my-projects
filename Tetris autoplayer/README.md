@@ -15,3 +15,36 @@ The project was built as a standalone experiment in algorithmic decision-making 
 - Designed to be easily extendable with improved heuristics or learning-based approaches
 
 ## Project Structure
+Tetris autoplayer/
+├── player.py
+├── README.md
+└── requirements.txt
+
+## How It Works
+For each incoming Tetris piece:
+1. All valid placements are simulated
+2. Each resulting board state is scored using heuristics such as:
+   - number of holes
+   - aggregate column height
+   - completed lines
+   - surface roughness
+3. The move with the best score is selected and executed
+
+## Requirements
+- Python 3.x
+
+## Usage
+This project is intended to be run in conjunction with a Tetris game environment or simulator that calls the `player.py` logic.
+
+## Limitations
+- Heuristic-based (no machine learning)
+- Performance depends on the quality of the scoring function
+- Assumes a compatible Tetris game interface
+
+## Future Improvements
+- Reinforcement learning–based policy
+- Adaptive heuristic weights
+- Support for different Tetris rule variants
+
+## Author
+Developed as a personal project to explore game AI and algorithmic decision-making.
