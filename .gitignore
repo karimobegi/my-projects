@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Finance project – never commit real data
+personal-finance-assistant/data/raw_transactions/*
+personal-finance-assistant/data/clean_transactions.csv
+personal-finance-assistant/data/spend_by_category.csv
+personal-finance-assistant/data/spend_by_month.csv
