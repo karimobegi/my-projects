@@ -39,24 +39,42 @@ This project was originally built locally and later refactored to follow cleaner
 Each HTML file has a corresponding CSS and JavaScript file with the same name to keep responsibilities clear and maintainable.
 Minigame website/
 ├── css/
-│   └── all CSS files (one per page / game)
+│   ├── index.css
+│   ├── single.css
+│   ├── multi.css
+│   ├── royal.css
+│   ├── end.css
+│   ├── tic-tac-toe.css
+│   ├── pig-game.css
+│   └── connect-four.css
+│
 ├── js/
-│   └── all JavaScript files (one per page / game)
+│   ├── index.js
+│   ├── single.js
+│   ├── multi.js
+│   ├── royal.js
+│   ├── end.js
+│   ├── tic-tac-toe.js
+│   ├── pig-game.js
+│   └── connect-four.js
+│
 ├── pages/
 │   ├── index.html
 │   ├── single.html
 │   ├── multi.html
 │   ├── royal.html
 │   └── end.html
+│
 ├── games/
 │   ├── tic-tac-toe.html
 │   ├── pig-game.html
 │   ├── connect-four.html
 │   └── other game HTML files
+│
 ├── images/
-│   └── all image assets (PNG, JPG, etc.)
+│   └── image assets (PNG, JPG, etc.)
+│
 └── README.md
----
 
 ## ▶️ How to Run
 
