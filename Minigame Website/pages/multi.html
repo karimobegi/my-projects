@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Multi Player</title>
+    <link rel="stylesheet" href="/css/multi.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Multi Player games</h1>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="single.html">Single Players</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="center">
+        <div id="banner-container">
+          <div class="game-container">
+            <img
+              id="xo-image"
+              src="/images/XO.png"
+              alt="XO Game Image"
+              style="margin-bottom: 50px"
+            />
+            <a href="/games/XO.html" class="button">Play XO</a>
+            <button class="show-modal">How to play</button>
+          </div>
+
+          <div class="game-container">
+            <img id="dice-image" src="/images/Dice.png" alt="Dice Game Image" />
+            <a href="/games/PigGame.html" class="button">Play Dice Game</a>
+            <button class="show-modal">How to play</button>
+          </div>
+          <div class="game-container">
+            <img
+              id="coFour-image"
+              src="/images/coFour.png"
+              alt="Connect Four Game Image"
+              style="margin-bottom: 50px"
+            />
+            <a href="/games/coFour.html" class="button">Play Connect Four</a>
+            <button class="show-modal">How to play</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="call-to-action">
+      <div class="container">
+        <p>Projet de site web de minijeux</p>
+        <div class="modal hidden">
+          <button class="close-modal">&times;</button>
+          <h1>Tutorial: XO</h1>
+          <p>
+            T1. XO (Tic-Tac-Toe) : Le Tic-Tac-Toe est un jeu classique qui se
+            joue sur une grille de 3x3. Le but est d'aligner trois de vos
+            symboles (X ou O) en ligne, colonne ou diagonale. Comment jouer :
+            Dessinez une grille de 3x3 sur une feuille de papier. Les joueurs
+            choisissent leur symbole (X ou O). Les X commencent. Les joueurs
+            prennent des tours pour placer leur symbole dans une case vide. Le
+            premier joueur à aligner trois de ses symboles gagne.
+          </p>
+
+          <h1>Tutorial Dice Game</h1>
+          <p>
+            2. Pig Dice Game : Le Pig Dice Game est un jeu de dés où le but est
+            d'accumuler des points tout en évitant de rouler un "1". Comment
+            jouer : Chaque joueur lance un dé à leur tour. Chaque lancer ajoute
+            le nombre de points à votre total, sauf si vous obtenez un "1". Si
+            vous obtenez un "1", vous perdez tous les points accumulés lors de
+            ce tour, et c'est au tour du joueur suivant. Les joueurs peuvent
+            choisir de s'arrêter et conserver leurs points à tout moment pendant
+            leur tour. Le premier joueur à atteindre un nombre prédéfini de
+            points (par exemple, 100) gagne.
+          </p>
+          <h1>Connect Four</h1>
+          <p>
+            3. Connect Four : Connect Four est un jeu de stratégie où le but est
+            d'aligner quatre de vos jetons horizontalement, verticalement ou en
+            diagonale. Comment jouer : Dessinez une grille verticale de 7
+            colonnes et horizontale de 6 rangées. Les joueurs choisissent leur
+            couleur de jeton (rouge ou jaune). Les joueurs prennent des tours
+            pour placer un jeton dans l'une des colonnes. Le jeton tombe en bas
+            de la colonne. Le premier joueur à aligner quatre de ses jetons
+            consécutifs gagne la partie.
+          </p>
+        </div>
+        <div class="overlay hidden"></div>
+      </div>
+    </section>
+    <script src="/js/multi.js"></script>
+  </body>
+</html>

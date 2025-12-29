@@ -1,0 +1,226 @@
+body {
+  background-color: #352f44;
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+header {
+  background-color: #574b6d;
+  padding: 10px 0;
+  width: 100%;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border-radius: 5px;
+  background-color: #847c9d;
+}
+
+.center {
+  text-align: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+#game-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.game-item {
+  width: 48%; /* Adjust the width as needed */
+  margin: 1%; /* Adjust the margin as needed */
+}
+
+.game-container {
+  text-align: center;
+}
+
+#banner-container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#banner {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.game-image {
+  width: 100%; /* Make both images full width */
+  height: auto;
+  min-width: 200px; /* Set a minimum width */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px; /* Add margin to separate images */
+}
+
+.button {
+  display: block;
+  padding: 8px 15px; /* Adjust the size as needed */
+  font-size: 12px; /* Adjust the font size as needed */
+  text-align: center;
+  text-decoration: none;
+  background-color: #e8491d;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #bf3916;
+}
+
+.call-to-action {
+  background-color: #574b6d;
+  padding: 40px 0;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.call-to-action h2 {
+  margin-bottom: 20px;
+}
+
+.call-to-action p {
+  margin-bottom: 30px;
+}
+
+.call-to-action form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.call-to-action input {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  margin-right: -5px;
+  width: 300px;
+}
+
+.call-to-action button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  background-color: #e8491d;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.call-to-action button:hover {
+  background-color: #bf3916;
+}
+
+#guess-image {
+  width: 100%; /* Make the image full width */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0px;
+}
+#memory-image {
+  width: 112%; /* Make the image full width */
+  height: 130%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#word-image {
+  width: 100%; /* Make the image full width */
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.show-modal {
+  font-size: 1rem; /* Adjust the font size */
+  padding: 0.75rem 1.5rem; /* Adjust the padding for a smaller button */
+  margin: 1rem 0.5rem; /* Adjust the margin as needed */
+  border: none;
+  background-color: #fff;
+  color: #444;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.close-modal {
+  position: absolute;
+  top: 1.2rem;
+  right: 2rem;
+  font-size: 5rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+.modal p {
+  color: #000; /* Set the desired text color, in this case, black (#000) */
+}
+.modal h1 {
+  color: #000;
+  text-align: center; /* Set the desired text color, in this case, black (#000) */
+}
+.modal h2 {
+  color: #000; /* Set the desired text color, in this case, black (#000) */
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 190%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
