@@ -37,7 +37,8 @@ This project was originally built locally and later refactored to follow cleaner
 
 ## 📁 Project Structure
 Each HTML file has a corresponding CSS and JavaScript file with the same name to keep responsibilities clear and maintainable.
-Minigame website/
+```
+Minigame-website/
 ├── css/
 │   ├── index.css
 │   ├── single.css
@@ -75,6 +76,7 @@ Minigame website/
 │   └── image assets (PNG, JPG, etc.)
 │
 └── README.md
+```
 
 ## ▶️ How to Run
 
