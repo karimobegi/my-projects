@@ -1,0 +1,13 @@
+date,merchant,amount,abs_amount,category
+2024-01-03,uber,-12.5,12.5,Transport
+2024-01-04,starbucks,-5.2,5.2,Restaurants
+2024-01-05,amazon prime,-8.99,8.99,Subscription
+2024-01-10,salary january,2500.0,2500.0,Income
+2024-01-12,netflix,-15.49,15.49,Subscription
+2024-01-14,carrefour,-73.4,73.4,Groceries
+2024-02-02,uber,-9.3,9.3,Transport
+2024-02-05,spotify,-10.99,10.99,Subscription
+2024-02-08,zara,-120.0,120.0,Shopping
+2024-02-15,salary february,2500.0,2500.0,Income
+2024-02-18,deliveroo,-22.8,22.8,Ordering
+2024-02-21,lime,-4.5,4.5,Transport

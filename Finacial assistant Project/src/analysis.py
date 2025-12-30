@@ -5,18 +5,39 @@ def load_data(path = 'data/clean_transactions.csv'):
     df['month'] = df['date'].dt.to_period('M')
     return df
 def category_analysis(df):
-    cat_group = df.groupby('category')
-    total_by_cat = cat_group['abs_amount'].sum()
-    avg_by_cat = cat_group['abs_amount'].mean()
+    expense_df = df[df["category"] != "Income"]
+
+    if expense_df.empty:
+        return {
+            "total_by_category": None,
+            "avg_by_category": None,
+            "count_by_category": None,
+            "percent_by_category": None,
+            "high_share_categories": None,
+            "top_spending_category": None,
+            "top_spending_value": None,
+        }
+
+    cat_group = expense_df.groupby("category")
+
+    total_by_cat = cat_group["abs_amount"].sum()
+    avg_by_cat = cat_group["abs_amount"].mean()
     count_by_cat = cat_group.size()
-    percent_by_cat = total_by_cat*100/(df['abs_amount'].sum())
+    percent_by_cat = total_by_cat * 100 / total_by_cat.sum()
+
     high_share_cat = percent_by_cat[percent_by_cat > 20]
+
+    top_cat = total_by_cat.idxmax()
+    top_val = float(total_by_cat.loc[top_cat])
+
     return {
         "total_by_category": total_by_cat,
         "avg_by_category": avg_by_cat,
         "count_by_category": count_by_cat,
         "percent_by_category": percent_by_cat,
-        "high_share_categories": high_share_cat
+        "high_share_categories": high_share_cat,
+        "top_spending_category": top_cat,
+        "top_spending_value": top_val,
     }
 def time_analysis(df):
     months = df.groupby('month')
@@ -33,8 +54,18 @@ def time_analysis(df):
         "month_over_month_change": month_over_month_change,
     }
 def outlier_analysis(df):
-    mean_amount = df['abs_amount'].mean()
-    large_transactions = df[df['abs_amount'] > 2 * mean_amount]
+    expense_df = df[df['category'] != 'Income']
+
+    if expense_df.empty:
+        return {
+            "mean_amount": 0,
+            "large_transactions": expense_df,
+            "num_large_transactions": 0,
+        }
+
+    mean_amount = expense_df['abs_amount'].mean()
+    large_transactions = expense_df[expense_df['abs_amount'] > 2 * mean_amount]
+
     return {
         "mean_amount": mean_amount,
         "large_transactions": large_transactions,
@@ -42,14 +73,18 @@ def outlier_analysis(df):
     }
 def run_analysis(path="data/clean_transactions.csv"):
     df = load_data(path)
+    expense_df = df[df['category'] != 'Income']
+    #print(expense_df)
     results = {
     "category": category_analysis(df),
     "time": time_analysis(df),
     "outliers": outlier_analysis(df),
-    "top_merchants":df.groupby('merchant')['abs_amount']
-              .sum()
-              .sort_values(ascending=False)
-              .head(3)
+    "top_merchants":(
+            expense_df.groupby('merchant')['abs_amount']
+            .sum()
+            .sort_values(ascending=False)
+            .head(3)
+        )
     }
     return results
 if __name__ == "__main__":

@@ -5,7 +5,7 @@ def category_advice(results):
     percent_by_category = cat["percent_by_category"]          # Series: category -> %
     high_share = cat["high_share_categories"]                 # Series filtered (>20%)
     total_by_category = cat["total_by_category"]              # Series: category -> total
-
+    #top_spending = 
     # C1: Dominant categories (>20%)
     if not high_share.empty:
         # Sort so biggest categories appear first
@@ -41,8 +41,20 @@ def outlier_advice(results):
 
         # O2 (optional): highlight the largest outlier
         largest = float(large_df["abs_amount"].max())
+
         if largest > 3 * mean_amount:
-            advice.append(f"One transaction was especially large ({largest:.2f}).")
+            largest_row = large_df.loc[
+                large_df["abs_amount"] == largest
+            ].iloc[0]
+
+            merchant = largest_row["merchant"]
+            date = largest_row["date"]
+            category = largest_row["category"]
+            advice.append(
+                f"The largest transaction was {largest:.2f} "
+                f"at {merchant} ({category}) on {date}."
+            )
+
     else:
         # O3: no outliers
         advice.append("No unusually large transactions were detected.")
