@@ -13,8 +13,8 @@ def ingest_transactions(
         "invalid_date": 0,
     }
 
-    with open(input_path, "r", newline="", encoding="utf-8") as payments:
-        csv_reader = csv.DictReader(payments)
+    with open(input_path, "r", newline="", encoding="utf-8") as transactions:
+        csv_reader = csv.DictReader(transactions)
 
         fieldnames = [
             "date",
@@ -24,14 +24,11 @@ def ingest_transactions(
             "category",
         ]
 
-        with open(output_path, "w", newline="", encoding="utf-8") as clean_p:
-            csv_writer = csv.DictWriter(clean_p, fieldnames=fieldnames)
+        with open(output_path, "w", newline="", encoding="utf-8") as clean_t:
+            csv_writer = csv.DictWriter(clean_t, fieldnames=fieldnames)
             csv_writer.writeheader()
-
             for line in csv_reader:
                 rows_read += 1
-
-                
                 if not line.get("merchant") or not line.get("amount") or not line.get("date"):
                     rows_skipped += 1
                     skip_reasons["missing_fields"] += 1
@@ -46,15 +43,12 @@ def ingest_transactions(
                     rows_skipped += 1
                     skip_reasons["invalid_amount"] += 1
                     continue
-
-                
                 try:
                     date = datetime.strptime(line["date"], "%Y-%m-%d").date()
                 except ValueError:
                     rows_skipped += 1
                     skip_reasons["invalid_date"] += 1
                     continue
-
                 
                 merchant = merchant.lower()
 

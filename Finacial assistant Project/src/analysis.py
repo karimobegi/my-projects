@@ -1,8 +1,11 @@
 import pandas as pd
-def load_data(path = 'data/clean_transactions.csv'):
-    df = pd.read_csv(path)
+import sqlite3
+def load_data(path = 'data/finance.db'):
+    conn = sqlite3.connect(path)
+    df = pd.read_sql_query("SELECT * FROM transactions", conn)
     df['date'] = pd.to_datetime(df['date'])
     df['month'] = df['date'].dt.to_period('M')
+    conn.close()
     return df
 def category_analysis(df):
     expense_df = df[df["category"] != "Income"]
@@ -71,7 +74,7 @@ def outlier_analysis(df):
         "large_transactions": large_transactions,
         "num_large_transactions": len(large_transactions),
     }
-def run_analysis(path="data/clean_transactions.csv"):
+def run_analysis(path="data/finance.db"):
     df = load_data(path)
     expense_df = df[df['category'] != 'Income']
     #print(expense_df)

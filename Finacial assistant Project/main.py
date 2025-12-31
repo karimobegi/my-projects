@@ -1,9 +1,10 @@
 from src.ingest import ingest_transactions
 from src.analysis import run_analysis
 from src.advice import generate_advice
-
+from src.persist import load_clean_csv, add_rows
 
 def main():
+
     input_path = "data/raw_transactions.csv"
     output_path = "data/clean_transactions.csv"
 
@@ -14,7 +15,9 @@ def main():
     )
 
     clean_path = ingest_summary["output_path"]
-
+    persist_summary = add_rows(clean_path)
+    clean_db_path = "data/finance.db"
+    print("clean path is: ", clean_path)
     # 2) Ingest report
     print("Ingest Report")
     print("-" * 30)
@@ -25,6 +28,8 @@ def main():
     print(f"- Rows skipped: {ingest_summary['rows_skipped']}")
     print(f"- Skip reasons: {ingest_summary['skip_reasons']}")
     print("-" * 30)
+    print("Database Persist Report")
+    print(persist_summary)
 
     # 3) Early exit if no valid data
     if ingest_summary["rows_written"] == 0:
@@ -35,9 +40,8 @@ def main():
     if ingest_summary["rows_read"] > 0 and ingest_summary["rows_written"] < 0.5 * ingest_summary["rows_read"]:
         print("⚠️ Warning: More than half of the rows were skipped.")
         print("-" * 30)
-
     # 4) Analyze
-    results = run_analysis(clean_path)
+    results = run_analysis(clean_db_path)
 
     # 5) Generate advice
     advice = generate_advice(results)
