@@ -74,11 +74,22 @@ def outlier_analysis(df):
         "large_transactions": large_transactions,
         "num_large_transactions": len(large_transactions),
     }
+def cashflow_analysis(df):
+    monthly = df.groupby(['month', 'category'])['amount'].sum().unstack(fill_value=0)
+    income = monthly.get('Income', 0)
+    expenses = monthly.drop(columns=['Income'], errors='ignore').sum(axis=1)
+    net_savings = income + expenses
+    return {
+        "income_by_month": income,
+        "expenses_by_month": expenses,
+        "net_savings_by_month": net_savings,
+        "total_net_savings": net_savings.sum(),
+    }
 def run_analysis(path="data/finance.db"):
     df = load_data(path)
     expense_df = df[df['category'] != 'Income']
-    #print(expense_df)
     results = {
+    "cashflow": cashflow_analysis(df),
     "category": category_analysis(df),
     "time": time_analysis(df),
     "outliers": outlier_analysis(df),
