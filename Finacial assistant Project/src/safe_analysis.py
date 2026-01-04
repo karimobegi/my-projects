@@ -1,4 +1,26 @@
 import pandas as pd
+import math
+def _clean_number(x):
+    try:
+        x = float(x)
+    except (TypeError, ValueError):
+        return x
+
+    if math.isnan(x) or math.isinf(x):
+        return None
+    return x
+
+def _sanitize(obj):
+    if isinstance(obj, dict):
+        return {k: _sanitize(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_sanitize(v) for v in obj]
+    if isinstance(obj, (int, str, bool)) or obj is None:
+        return obj
+    if isinstance(obj, float):
+        return _clean_number(obj)
+    return _clean_number(obj)
+
 def _series_to_json_dict(s):
     if s is None:
         return None
@@ -70,4 +92,4 @@ def make_json_safe(results: dict) -> dict:
         top_merchants.to_dict() if top_merchants is not None else None
     )
 
-    return safe
+    return _sanitize(safe)

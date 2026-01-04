@@ -42,8 +42,8 @@ def category_analysis(df):
         "top_spending_value": top_val,
     }
 def time_analysis(df):
-    months = df.groupby('month')
-    total_by_month = months['abs_amount'].sum()
+    expenses = df[df["category"] != "Income"].groupby("month")["abs_amount"]
+    total_by_month = expenses.sum()
     highest_month = total_by_month.idxmax()
     highest_value = total_by_month.loc[highest_month]
     has_trend = total_by_month.size >= 2
@@ -57,7 +57,6 @@ def time_analysis(df):
     }
 def outlier_analysis(df):
     expense_df = df[df['category'] != 'Income']
-
     if expense_df.empty:
         return {
             "mean_amount": 0,
