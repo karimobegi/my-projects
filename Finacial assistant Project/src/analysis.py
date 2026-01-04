@@ -9,7 +9,6 @@ def load_data(path = 'data/finance.db'):
     return df
 def category_analysis(df):
     expense_df = df[df["category"] != "Income"]
-
     if expense_df.empty:
         return {
             "total_by_category": None,

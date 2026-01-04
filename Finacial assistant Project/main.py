@@ -74,9 +74,8 @@ def main():
         print("Database is empty. Nothing to analyze.")
         return
 
-    #Analyze (should read from DB inside analysis.py)
-    #If your run_analysis still expects a db_path, pass args.db. Otherwise, just call run_analysis().
     results = run_analysis(args.db)
+    print(results)
 
     #Generate advice
     advice = generate_advice(results)
