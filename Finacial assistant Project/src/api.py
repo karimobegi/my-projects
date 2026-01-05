@@ -7,11 +7,18 @@ from src.db import db_stats, reset_db
 from src.safe_analysis import make_json_safe
 from pathlib import Path
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 import os
 UPLOAD_DIR = Path("data/uploads")
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="src/Website", html=False), name="static")
+
+@app.get("/app")
+def app_page():
+    return FileResponse("src/Website/index.html")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # for development only
