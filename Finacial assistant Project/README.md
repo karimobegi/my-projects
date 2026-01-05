@@ -1,7 +1,7 @@
 # Personal Finance Assistant
 
 A full-stack personal finance analysis application built with **FastAPI**, **Pandas**, and **SQLite**.  
-Users can upload a bank transaction CSV and receive structured spending analysis and human-readable financial advice through a web interface.
+Users upload a bank transaction CSV and receive structured spending analysis and human-readable financial advice through a web interface.
 
 🔗 **Live Demo:**  
 https://YOUR-RENDER-URL.onrender.com/app  
@@ -11,17 +11,16 @@ _(Free-tier deployment — first load may take ~30 seconds)_
 
 ## Overview
 
-This project implements an end-to-end personal finance analysis pipeline exposed through a REST API and a simple frontend.
+This project implements an end-to-end personal finance analysis pipeline exposed through a REST API and a lightweight frontend.
 
 It ingests raw bank transaction CSV exports, cleans and categorizes transactions, persists them into a SQLite database, performs analytical aggregation using Pandas, and generates concise rule-based financial insights.
 
 The goal of the project is to demonstrate:
 
-- backend engineering fundamentals
-- data ingestion and cleaning
+- data engineering fundamentals
+- backend API design
 - analytical reasoning
-- API design
-- clean project architecture
+- clean software architecture
 - end-to-end deployment
 
 ---
@@ -33,7 +32,7 @@ The goal of the project is to demonstrate:
 - Upload bank CSV files
 - Clean and normalize transaction data
 - Categorize transactions using rule-based logic
-- Persist data into a SQLite database
+- Persist transactions into SQLite
 - Analyze spending by category and by month
 - Detect unusually large transactions (outliers)
 - Compute income, expenses, and net savings
@@ -51,34 +50,36 @@ The goal of the project is to demonstrate:
 
 ### Deployment
 
-- Backend deployed with FastAPI
+- FastAPI backend deployed on Render
 - Frontend served by FastAPI
-- Live demo hosted on Render
+- Public demo URL
 
 ---
 
 ## Project Structure
 
+```text
 financial-assistant-project/
 ├── src/
-│ ├── api.py # FastAPI application
-│ ├── ingest.py # CSV ingestion & cleaning
-│ ├── persist.py # SQLite persistence
-│ ├── analysis.py # Pandas-based analysis
-│ ├── safe_analysis.py # JSON-safe serialization
-│ ├── advice.py # Rule-based advice
-│ ├── db.py # DB setup, stats, reset
-│ └── Website/
-│ ├── index.html # Frontend UI
-│ ├── style.css
-│ └── script.js
+│   ├── api.py              # FastAPI application
+│   ├── ingest.py           # CSV ingestion & cleaning
+│   ├── persist.py          # SQLite persistence
+│   ├── analysis.py         # Pandas-based analysis
+│   ├── safe_analysis.py    # JSON-safe serialization
+│   ├── advice.py           # Rule-based advice
+│   ├── db.py               # DB setup, stats, reset
+│   └── Website/
+│       ├── index.html      # Frontend UI
+│       ├── style.css
+│       └── script.js
 ├── data/
-│ ├── uploads/ # Uploaded CSVs (gitignored)
-│ ├── clean_transactions.csv
-│ └── finance.db
+│   ├── uploads/            # Uploaded CSVs (gitignored)
+│   ├── clean_transactions.csv
+│   └── finance.db
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+```
 
 ---
 
@@ -95,7 +96,7 @@ financial-assistant-project/
 
 ### Phase 2 — Persistence
 
-- Stores transactions in SQLite
+- Stores cleaned transactions in SQLite
 - Prevents duplicate inserts via constraints
 
 ### Phase 3 — Analysis
@@ -110,20 +111,39 @@ financial-assistant-project/
 
 - Interprets analysis results using rule-based logic
 - Produces concise, human-readable insights
-- Handles cases where insufficient data is available
+- Handles insufficient or partial data gracefully
+
+### Phase 5 — FastAPI
+
+- Exposes the full pipeline via REST endpoints
+- Uploads CSV files using multipart form data
+- Returns JSON-safe analytical results
+- Provides a single `/run-all` endpoint for full execution
+
+### Phase 6 — Frontend
+
+- Lightweight HTML / CSS / JavaScript UI
+- Allows CSV upload and DB reset
+- Displays analysis output and advice
+
+### Phase 7 — Deployment
+
+- Deployed on Render (free tier)
+- Backend and frontend served together
+- Public demo link available
 
 ---
 
 ## Input
 
-The application expects a **CSV export from a bank** with columns similar to:
+The application expects a **CSV export from a bank**, typically containing:
 
 - `date`
 - `merchant`
 - `amount`
 - `category` _(optional — inferred if missing)_
 
-Exact formatting differences are handled during ingestion.
+Formatting differences are handled during ingestion.
 
 ---
 
@@ -131,4 +151,4 @@ Exact formatting differences are handled during ingestion.
 
 - This project is intended for learning and demonstration purposes
 - No real personal financial data should be committed
-- Free-tier deployment may experience cold starts
+- Free-tier deployments may experience cold starts
