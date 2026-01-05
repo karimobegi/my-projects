@@ -6,12 +6,20 @@ from src.advice import generate_advice
 from src.db import db_stats, reset_db
 from src.safe_analysis import make_json_safe
 from pathlib import Path
+from fastapi.middleware.cors import CORSMiddleware
 import os
-
-app = FastAPI()
-
 UPLOAD_DIR = Path("data/uploads")
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # for development only
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 
 @app.get("/")
