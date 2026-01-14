@@ -29,11 +29,11 @@ def _series_to_json_dict(s):
 def make_json_safe(results: dict) -> dict:
     safe = {}
 
-    cashflow = results.get("cashflow", {})
-    time = results.get("time", {})
-    category = results.get("category", {})
-    outlier = results.get("outliers", {})
-    top_merchants = results.get("top_merchants", None)
+    cashflow = results.get("cashflow") or {}
+    time = results.get("time") or {}
+    category = results.get("category") or {}
+    outlier = results.get("outliers") or {}
+    top_merchants = results.get("top_merchants")
 
     safe["category"] = {
         "total_by_category": category["total_by_category"].to_dict()

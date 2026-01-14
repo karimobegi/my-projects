@@ -64,6 +64,7 @@ def outlier_analysis(df):
             "num_large_transactions": 0,
         }
 
+
     mean_amount = expense_df['abs_amount'].mean()
     large_transactions = expense_df[expense_df['abs_amount'] > 2 * mean_amount]
 
