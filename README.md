@@ -7,33 +7,32 @@ The goal of this repository is to showcase practical software development, data 
 
 ---
 
-## 📁 Projects
+## Projects
 
-### 🎮 Tetris Autoplayer
+### Tetris Autoplayer
 
 An automated Tetris player implemented in Python using heuristic-based decision making to evaluate board states and select optimal moves.
 
 - Focus: game logic, heuristics, algorithmic decision-making
 - Technologies: Python
 
-📂 Folder: `Tetris autoplayer/`  
-📄 Documentation: see `Tetris autoplayer/README.md`
+Folder: `Tetris autoplayer/`  
+Documentation: see `Tetris autoplayer/README.md`
 
 ---
 
-### 💰 Personal Finance Assistant
+### Personal Finance Assistant
 
-A Python-based data pipeline that ingests bank transaction CSV exports, cleans and analyzes transactions using Pandas, and generates human-readable financial insights.
+A full-stack personal finance analysis tool that ingests bank transaction CSV files, cleans and stores the data, performs analytical summaries using Pandas, and generates human-readable financial insights. The system is exposed via a FastAPI backend with a lightweight web interface and deployed as a live demo.
+- Focus: end-to-end data pipelines, backend APIs, analytical reasoning, deployment
+- Technologies: Python, Pandas, FastAPI, SQLite, HTML/CSS/JavaScript, Render
 
-- Focus: data ingestion, analysis pipelines, clean software architecture
-- Technologies: Python, Pandas
-
-📂 Folder: `financial-assistant/`  
-📄 Documentation: see `financial-assistant/README.md`
+Folder: `financial-assistant/`  
+Documentation: see `financial-assistant/README.md`
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - Python
 - Pandas
@@ -41,10 +40,11 @@ A Python-based data pipeline that ingests bank transaction CSV exports, cleans a
 - SQLite
 - FastAPI
 - HTML/CSS/Javascript
+- Render
 
 ---
 
-## 📌 Notes
+## Notes
 
 - Each project can be run and extended independently
 - Generated data and personal files are excluded via `.gitignore`
@@ -52,7 +52,7 @@ A Python-based data pipeline that ingests bank transaction CSV exports, cleans a
 
 ---
 
-## 👤 Author
+## Author
 
 Karim Obegi  
-🔗 LinkedIn: https://www.linkedin.com/in/karim-obegi
+LinkedIn: https://www.linkedin.com/in/karim-obegi
