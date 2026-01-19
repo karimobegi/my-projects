@@ -8,7 +8,7 @@ def category_advice(results):
     
    
     if not high_share.empty:
-        # Sort so biggest categories appear first
+        #Sort so biggest categories appear first
         high_share_sorted = high_share.sort_values(ascending=False)
 
         parts = [f"{name} ({pct:.1f}%)" for name, pct in high_share_sorted.items()]
@@ -35,11 +35,11 @@ def outlier_advice(results):
     large_df = out["large_transactions"]
     mean_amount = float(out["mean_amount"])
 
-    # O1: any large transactions exist
+    #any large transactions exist
     if num_large > 0:
         advice.append(f"You had {num_large} unusually large transaction(s).")
 
-        # O2 (optional): highlight the largest outlier
+        #highlight the largest outlier
         largest = float(large_df["abs_amount"].max())
 
         if largest > 3 * mean_amount:
@@ -56,7 +56,7 @@ def outlier_advice(results):
             )
 
     else:
-        # O3: no outliers
+        #no outliers
         advice.append("No unusually large transactions were detected.")
 
     return advice
@@ -74,7 +74,7 @@ def cashflow_advice(results):
         advice.append("Not enough data to assess savings over time.")
         return advice
 
-    # 1) Overall savings health
+    #Overall savings health
     if total_net > 0:
         advice.append(
             f"Overall, you saved money during the analyzed period (+{total_net:.2f})."
@@ -86,7 +86,7 @@ def cashflow_advice(results):
     else:
         advice.append("Overall, your income and expenses balanced out.")
 
-    # 2) Best and worst months
+    #Best and worst months
     best_month = net_by_month.idxmax()
     best_value = net_by_month.loc[best_month]
 
@@ -102,14 +102,14 @@ def cashflow_advice(results):
             f"You overspent the most in {worst_month} ({worst_value:.2f})."
         )
 
-    # 3) Overspending warning
+    #Overspending warning
     negative_months = net_by_month[net_by_month < 0]
     if not negative_months.empty:
         advice.append(
             f"You had {len(negative_months)} month(s) where expenses exceeded income."
         )
 
-    # 4) Month-over-month trend (if possible)
+    #Month-over-month trend (if possible)
     if len(net_by_month) >= 2:
         last_change = net_by_month.iloc[-1] - net_by_month.iloc[-2]
 
@@ -120,7 +120,7 @@ def cashflow_advice(results):
         else:
             advice.append("Your net savings remained stable compared to the previous month.")
 
-    # 5) Consistency signal
+    #Consistency signal
     if (net_by_month > 0).all():
         advice.append("You consistently saved money every month.")
     elif (net_by_month <= 0).all():
@@ -147,7 +147,7 @@ def trend_advice(results):
         advice.append("Not enough monthly history to assess spending trends.")
         return advice
 
-    mom = t["month_over_month_change"]   # Series indexed by month
+    mom = t["month_over_month_change"]  
     last_change = float(mom.iloc[-1])
 
     if last_change > 0:
