@@ -62,7 +62,7 @@ def main():
             print("⚠️ Warning: More than half of the rows were skipped.")
             print("-" * 30)
 
-    # 2) DB stats (always useful, even with --no-persist)
+    #DB stats (always useful, even with --no-persist)
     stats = db_stats()
     print("DB Stats")
     print("-" * 30)
@@ -77,10 +77,8 @@ def main():
     results = run_analysis(args.db)
     print(results)
 
-    #Generate advice
-    advice = generate_advice(results)
 
-    
+    advice = generate_advice(results)
     print("Spending Summary")
     print("-" * 30)
     for line in advice:

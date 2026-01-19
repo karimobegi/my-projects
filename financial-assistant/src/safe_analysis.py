@@ -86,6 +86,7 @@ def make_json_safe(results: dict) -> dict:
         "expenses_by_month": _series_to_json_dict(cashflow.get("expenses_by_month")),
         "net_savings_by_month": _series_to_json_dict(cashflow.get("net_savings_by_month")),
         "total_net_savings": float(cashflow.get("total_net_savings", 0)),
+        "expectation": float(cashflow.get("expectation", 0) or 0)
     }
 
     safe["top_merchants"] = (

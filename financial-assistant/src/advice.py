@@ -125,6 +125,16 @@ def cashflow_advice(results):
         advice.append("You consistently saved money every month.")
     elif (net_by_month <= 0).all():
         advice.append("You did not save money in any of the analyzed months.")
+    exp = cashflow.get("expectation")
+    if exp is not None:
+        if exp > 0:
+            advice.append(
+                f"Based on your current pace, you could save approximately {exp:.2f} over the rest of the year."
+            )
+        else:
+            advice.append(
+                f"At your current pace, you may lose around {abs(exp):.2f} over the rest of the year."
+            )
 
     return advice
 def trend_advice(results):

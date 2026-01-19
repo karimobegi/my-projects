@@ -78,11 +78,20 @@ def cashflow_analysis(df):
     income = monthly.get('Income', 0)
     expenses = monthly.drop(columns=['Income'], errors='ignore').sum(axis=1)
     net_savings = income + expenses
+    total_net = net_savings.sum()
+    num_months = net_savings.shape[0]
+    last_month_num = int(str(net_savings.index[-1]).split("-")[1])
+    remaining_months = max(0, 12 - last_month_num)
+    future_expected = (
+        total_net * remaining_months / num_months
+        if num_months > 0 else 0
+    )
     return {
         "income_by_month": income,
         "expenses_by_month": expenses,
         "net_savings_by_month": net_savings,
         "total_net_savings": net_savings.sum(),
+        "expectation": future_expected
     }
 def run_analysis(path="data/finance.db"):
     df = load_data(path)
