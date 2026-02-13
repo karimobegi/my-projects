@@ -16,7 +16,8 @@ UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="src/Website"), name="static")
 
-@app.get("/health")
+
+@app.get("/")
 def root():
     return RedirectResponse(url="/app")
 
@@ -34,7 +35,7 @@ app.add_middleware(
 
 
 
-@app.get("/")
+@app.get("/health")
 def health():
     return {"status": "ok"}
 
