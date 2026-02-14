@@ -4,7 +4,7 @@ A full-stack personal finance analysis application built with **FastAPI**, **Pan
 Users upload a bank transaction CSV and receive structured spending analysis and human-readable financial advice through a web interface.
 
 🔗 **Live Demo:**  
-https://my-projects-mf93.onrender.com/app
+https://my-projects-mf93.onrender.com/
 _(Free-tier deployment — first load may take ~30 seconds)_
 
 ---
